@@ -720,9 +720,9 @@ const postSetupTasks = async function (v6Failed, v4Failed) {
     setWindowTitle('SillyTavern WebServer');
 
 
-    let ipv6Color = color.green;
-    let ipv4Color = color.red;
-    let autorunColor = color.blue;
+    let ipv6Color = color.bright_magenta;
+    let ipv4Color = color.bright_green;
+    let autorunColor = color.bright_blue;
 
     let logListen = 'SillyTavern is listening on';
 
@@ -734,7 +734,7 @@ const postSetupTasks = async function (v6Failed, v4Failed) {
         logListen += ipv4Color(' IPv4: ' + tavernUrl.host);
     }
 
-    let goToLog = 'Go to: ' + autorunColor(autorunUrl) + ' to open SillyTavern';
+    let goToLog = 'Go to: ' + autorunColor(autorunUrl, true, true) + ' to open SillyTavern';
     let plainGoToLog = removeColorFormatting(goToLog);
 
     console.log(logListen);

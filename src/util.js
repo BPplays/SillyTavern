@@ -278,19 +278,29 @@ function deepMerge(target, source) {
 }
 
 const color = {
-    byNum: (mess, fgNum) => {
+    byNum: (mess, fgNum, bold, underlined) => {
         mess = mess || '';
         fgNum = fgNum === undefined ? 31 : fgNum;
-        return '\u001b[' + fgNum + 'm' + mess + '\u001b[39m';
+        if (bold) fgNum += ";1";
+        if (underlined) fgNum += ";4";
+        return '\u001b[' + fgNum + 'm' + mess + '\u001b[0m';
     },
-    black: (mess) => color.byNum(mess, 30),
-    red: (mess) => color.byNum(mess, 31),
-    green: (mess) => color.byNum(mess, 32),
-    yellow: (mess) => color.byNum(mess, 33),
-    blue: (mess) => color.byNum(mess, 34),
-    magenta: (mess) => color.byNum(mess, 35),
-    cyan: (mess) => color.byNum(mess, 36),
-    white: (mess) => color.byNum(mess, 37),
+    black: (mess, bold, underlined) => color.byNum(mess, 30, bold, underlined),
+    red: (mess, bold, underlined) => color.byNum(mess, 31, bold, underlined),
+    green: (mess, bold, underlined) => color.byNum(mess, 32, bold, underlined),
+    yellow: (mess, bold, underlined) => color.byNum(mess, 33, bold, underlined),
+    blue: (mess, bold, underlined) => color.byNum(mess, 34, bold, underlined),
+    magenta: (mess, bold, underlined) => color.byNum(mess, 35, bold, underlined),
+    cyan: (mess, bold, underlined) => color.byNum(mess, 36, bold, underlined),
+    white: (mess, bold, underlined) => color.byNum(mess, 37, bold, underlined),
+    bright_black: (mess, bold, underlined) => color.byNum(mess, 90, bold, underlined),
+    bright_red: (mess, bold, underlined) => color.byNum(mess, 91, bold, underlined),
+    bright_green: (mess, bold, underlined) => color.byNum(mess, 92, bold, underlined),
+    bright_yellow: (mess, bold, underlined) => color.byNum(mess, 93, bold, underlined),
+    bright_blue: (mess, bold, underlined) => color.byNum(mess, 94, bold, underlined),
+    bright_magenta: (mess, bold, underlined) => color.byNum(mess, 95, bold, underlined),
+    bright_cyan: (mess, bold, underlined) => color.byNum(mess, 96, bold, underlined),
+    bright_white: (mess, bold, underlined) => color.byNum(mess, 97, bold, underlined),
 };
 
 /**
